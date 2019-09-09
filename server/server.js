@@ -67,7 +67,7 @@ app.post("/api/product",uploadImage.single('productImage'),(req,res)=>{
     console.log(req.body);
     console.log(req.file);
 
-
+    
     const product = new Product(req.body);
 
     product.productImage = req.file.filename;
