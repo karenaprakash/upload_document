@@ -63,15 +63,8 @@ Product.find().skip(skip).sort({_id : order}).limit(limit).exec((err,doc)=>{
 //POST METHOD : "/api/product" store details of product in database 
 
 app.post("/api/product",uploadImage.single('productImage'),(req,res)=>{
-   
-    console.log(req.body);
-    console.log(req.file);
-
-    
     const product = new Product(req.body);
-
     product.productImage = req.file.filename;
-
     product.save((err,doc)=>{
         if(err) return res.status(400).send(err);
         res.status(200).json({
@@ -80,7 +73,6 @@ app.post("/api/product",uploadImage.single('productImage'),(req,res)=>{
             productImage : doc.productImage
         })
     })
-
 })
 
 /*------------- UPDATE ------------------*/
